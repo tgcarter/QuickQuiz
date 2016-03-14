@@ -20,6 +20,7 @@
 		<preference name="fullscreen" value="true" />
 		<preference name="target-device" value="handset" />
 		<preference name="prerendered-icon" value="true" />
+		<preference name="DisallowOverscroll" value="true" />
 		
 		<!-- **** Icons **** -->
 		<!-- iPhone 6 / 6+ -->
