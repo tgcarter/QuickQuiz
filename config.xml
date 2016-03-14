@@ -17,6 +17,8 @@
 
 		<platform name="ios">
 		<preference name="orientation" value="portrait" />
+		<preference name="fullscreen" value="true" />
+		<preference name="target-device" value="handset" />
 		
 		<!-- **** Icons **** -->
 		<!-- iPhone 6 / 6+ -->
@@ -24,9 +26,6 @@
 		<!-- iPhone / iPod Touch  -->
 		<icon src="icon-60.png" width="60" height="60" />
 		<icon src="icon-60@2x.png" width="120" height="120" />
-		<!-- iPad -->
-		<icon src="icon-76.png" width="76" height="76" />
-		<icon src="icon-76@2x.png" width="152" height="152" />
 		<!-- Settings Icon -->
 		<icon src="icon-small.png" width="29" height="29" />
 		<icon src="icon-small@2x.png" width="58" height="58" />
@@ -44,12 +43,6 @@
 		<splash src="Default-667h@2x.png" width="750" height="1334" />
 		<splash src="Default-Portrait-736h@3x.png" width="1242" height="2208" />
 		<splash src="Default-Landscape-736h@3x.png" width="2208" height="1242" />
-		<!-- iPad -->
-		<splash src="Default-Portrait.png" width="768" height="1024" />
-		<splash src="Default-Landscape.png" width="1024" height="768" />
-		<!-- Retina iPad -->
-		<splash src="Default-Portrait@2x.png" width="1536" height="2048" />
-		<splash src="Default-Landscape@2x.png" width="2048" height="1536" />
 	</platform>
 
 	<gap:plugin name="cordova-plugin-shake" source="npm"/>
