@@ -3,7 +3,7 @@ function onLoad() {
 }
 
 function onDeviceReady() {
-    // Now safe to use the Cordova API
+    navigator.splashscreen.hide();
 }
 
 /*//Database Creation

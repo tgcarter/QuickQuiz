@@ -21,6 +21,8 @@
 		<preference name="target-device" value="handset" />
 		<preference name="prerendered-icon" value="true" />
 		<preference name="DisallowOverscroll" value="true" />
+		<preference name="AutoHideSplashScreen" value="false" />
+		<preference name="StatusBarStyle" value="lightcontent" />
 		
 		<!-- **** Icons **** -->
 		<!-- iPhone 6 / 6+ -->
@@ -49,6 +51,6 @@
 
 	<gap:plugin name="cordova-plugin-shake" source="npm"/>
 	<gap:plugin name="cordova-plugin-statusbar" source="npm" />
-		<preference name="StatusBarStyle" value="lightcontent" />
+	<gap:plugin name="org.apache.cordova.splashscreen" />
 	
 </widget>
