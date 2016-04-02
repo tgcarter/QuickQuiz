@@ -1,26 +1,22 @@
-var feedURL = "https://www.metaweather.com/api/location/44418/";
+/*//Database Creation
+var db = window.openDatabase("quickquiz", 1.0, "Questions DB", 1024 * 1024);
+db.transaction(createTable, error, success);
+	
+function createTable(tx) {	
+ 	tx.executeSql("CREATE TABLE IF NOT EXISTS questions(id UNIQUE, question TEXT, answer INT)");
+}
+	
+function success() {
+	db.transaction(addFood, error);
+}
+	
+function addFood(tx) {
+	tx.executeSql("INSERT INTO food(id, title) VALUES (1, 'chips')");
+	tx.executeSql("INSERT INTO food(id, title) VALUES (2, 'cake')");
+	tx.executeSql("INSERT INTO food(id, title) VALUES (3, 'nachos')");
+}
+	
+function error(err) {
+	alert("An Error has occured:" + err.message);
+}*/
 
-$(document).on('pagecreate', '#feedPage', function(event) {
-	
-	
-	<!-- Use an HTML GET request to obtain data from a Yahoo Pipe
-	<!-- The Yahoo pipe currently parses the BBC News RSS feed  -->
-	var xmlhttp=new XMLHttpRequest();
-	xmlhttp.open("GET", feedURL, false);
-	xmlhttp.send();
-		
-		
-	<!-- parse the resulting JSON into Javascript Data Object -->
-	<!-- you can use a live parser to inspect the contents of the JSON
-	<!-- http://json.parser.online.fr/ -->
-	var weather= JSON.parse(xmlhttp.responseText);
-	
-	
-	<!-- Define Ractive binding -->
-	var ractive = new Ractive({
-    	el: 'container', <!-- where -->
-    	template: '#myTemplate', <!-- how -->
-    	data: { weather : weather.consolidated_weather } <!-- what - specify the list of news articles 'items' using dot notation-->
-	});
-	
-});
