@@ -469,3 +469,6 @@ h1, h2, h3, p {
 .center {
 	margin-top: 25%;
 }
+.ui-content {
+	padding: 2em 1em 1em;
+}
