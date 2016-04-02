@@ -48,6 +48,7 @@
 	</platform>
 
 	<gap:plugin name="cordova-plugin-shake" source="npm"/>
-	<plugin name="com.phonegap.plugin.statusbar" spec="1.1.0" source="pgb" />
+	<gap:plugin name="cordova-plugin-statusbar" source="npm" />
+		<preference name="StatusBarStyle" value="lightcontent" />
 	
 </widget>

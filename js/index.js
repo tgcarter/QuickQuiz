@@ -1,6 +1,11 @@
-$( document ).ready(function() {
-	StatusBar.styleLightContent();
-});
+function onLoad() {
+        document.addEventListener("deviceready", onDeviceReady, false);
+}
+
+function onDeviceReady() {
+    // Now safe to use the Cordova API
+}
+
 /*//Database Creation
 var db = window.openDatabase("quickquiz", 1.0, "Questions DB", 1024 * 1024);
 db.transaction(createTable, error, success);
