@@ -1,3 +1,6 @@
+$( document ).ready(function() {
+	StatusBar.styleLightContent();
+});
 /*//Database Creation
 var db = window.openDatabase("quickquiz", 1.0, "Questions DB", 1024 * 1024);
 db.transaction(createTable, error, success);
