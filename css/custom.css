@@ -463,3 +463,9 @@ h1, h2, h3, p {
 #time {
 	font-size: 35px;
 }
+#question {
+	margin-top: 50px;
+}
+.center {
+	margin-top: 25%;
+}

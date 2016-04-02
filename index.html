@@ -18,8 +18,10 @@
 	<div role="main" class="ui-content">
 		<a class="settings ui-alt-icon" href="#settings" data-role="button" data-icon="gear" data-iconpos="notext">Settings</a>
 		<h1 class="center-wrapper">QuickQuiz</h1>
-		<h2 class="center-wrapper">Are you ready to play? Hit start to start the fun!</h2>
-		<a href="#game" data-transition="slideup" class="ui-btn">Start</a>
+		<div class="center">
+			<h2 class="center-wrapper">Are you ready to play? Hit start to start the fun!</h2>
+			<a href="#game" data-transition="slideup" class="ui-btn">Start</a>
+		</div>
 	</div>
 </div>
 <div data-role="page" id="game">
@@ -28,15 +30,20 @@
 		<a class="home ui-alt-icon" href="#home" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
 		<h1 class="center-wrapper">QuickQuiz</h1>
 		<h2 class="center-wrapper timer">Time Left: <span id="time">60</span> Seconds!</h2>
-		<h2 class="center-wrapper">Question Placeholder</h2>
+		<h2 class="center-wrapper" id="question">Question Placeholder</h2>
 		<a href="" class="ui-btn" id="true">True</a>
 		<h3 class="center-wrapper false">Shake for False</h3>
 	</div>
 </div>
 <div data-role="page" id="settings">
 	<div role="main" class="ui-content">
-	<a class="home ui-alt-icon" href="#home" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
-	<p>Settings</p>
+		<a class="home ui-alt-icon" href="#home" data-role="button" data-icon="home" data-iconpos="notext">Home</a>
+		<h1 class="center-wrapper">QuickQuiz</h1>
+		<div class="center">
+			<h2 class="center-wrapper">Settings</h2>
+			<a href="" class="ui-btn">Reset Highscore</a>
+			<a href="" class="ui-btn">Toggle Shake for False</a>
+		</div>
 	</div>
 </div>
 </body>
