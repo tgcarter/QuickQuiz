@@ -5,6 +5,8 @@ function onLoad() {
 function onDeviceReady(){
     navigator.splashscreen.hide();
     var db = window.openDatabase("quickquiz", 1.0, "Questions DB", 1024 * 1024);
+	db.transaction(createTable, error, addsuccess);
+
 }
 var timeleft = true;
 var questions = 0;
@@ -30,28 +32,30 @@ $(document).on("pageshow","#game",function(){
 	});
 });
 function createTable(tx) {	
- 	tx.executeSql("CREATE TABLE IF NOT EXISTS questions(_id INTEGER PRIMARY KEY, question VARCHAR, answer INT)", addsuccess, adderror);
+ 	tx.executeSql("CREATE TABLE IF NOT EXISTS questions(_id INTEGER PRIMARY KEY, question VARCHAR UNIQUE, answer INT)");
 }//Add Questions
-function addsuccess(tx) {
+function addsuccess() {
+	db.transaction(addQuestions, error, getsuccess);
+}
+function addQuestions(tx){
 	tx.executeSql("INSERT INTO questions(question, answer) VALUES ('Is New York the capital of America?', 0)");
 	tx.executeSql("INSERT INTO questions(question, answer) VALUES ('The Great Wall Of China is visible from the moon?', 0)");
 	tx.executeSql("INSERT INTO questions(question, answer) VALUES ('The ‘black box’ in an aeroplane is black?', 0)");
 	tx.executeSql("INSERT INTO questions(question, answer) VALUES ('The record for the longest rail tunnel is held by the Channel Tunnel between Britain and France?', 0)");
 	console.log("Input");
-	Questions();
-
 }
 function error(err) {
 	alert("An Error has occured:" + err.message);
 }
 //Get Questions
-function Questions (){
-	function getQuestions(tx){
-		tx.executeSql('SELECT * FROM questions', [], getsuccess, error);
-	}
-	function getsuccess(tx) {
-		db.transaction(addQuestions, error);
-		questions = results.rows.length;
-		console.log("Output");
-	}
+function getQuestions(tx){
+	tx.executeSql('SELECT * FROM questions', [], FinalDBSetup, error);
+}
+function getsuccess(results) {
+	db.transaction(getQuestions, error, FinalDBSetup);
+}
+function FinalDBSetup(tx, results){
+	questions = results.rows.length;
+	console.log(questions);
+	//db.transaction(getQuestions, error, FinalDBSetup);
 }
