@@ -15,6 +15,10 @@ $(document).on("pageshow","#game",function(){
 	document.getElementById("time").innerHTML=count;
 	var counter=setInterval(timer, 1000); //1000 will  run it every 1 second
 	function timer() {
+		if (count == 5){
+	  		QuestionDisplay();
+	  		console.log("Show display");
+	  	}
 	  	count=count-1;
 	  	if (count <= 0){
 	    	clearInterval(counter);
@@ -24,9 +28,6 @@ $(document).on("pageshow","#game",function(){
 	    	return;
 	  	} else {
 	  		document.getElementById("time").innerHTML=count; // watch for spelling
-	  	}
-	  	if (count == 5){
-	  		QuestionDisplay();
 	  	}
 	}
 	$(document).on("pagebeforehide","#game",function(){
