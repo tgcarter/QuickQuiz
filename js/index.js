@@ -25,7 +25,7 @@ $(document).on("pageshow","#game",function(){
 	  	} else {
 	  		document.getElementById("time").innerHTML=count; // watch for spelling
 	  	}
-	  	if (count == 60){
+	  	if (count == 5){
 	  		QuestionDisplay();
 	  	}
 	}
