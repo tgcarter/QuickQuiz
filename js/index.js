@@ -25,6 +25,9 @@ $(document).on("pageshow","#game",function(){
 	  	} else {
 	  		document.getElementById("time").innerHTML=count; // watch for spelling
 	  	}
+	  	if (count == 60){
+	  		QuestionDisplay();
+	  	}
 	}
 	$(document).on("pagebeforehide","#game",function(){
 		clearInterval(counter);
