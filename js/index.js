@@ -37,6 +37,7 @@ function addsuccess(tx) {
 	tx.executeSql("INSERT INTO questions(question, answer) VALUES ('The Great Wall Of China is visible from the moon?', 0)");
 	tx.executeSql("INSERT INTO questions(question, answer) VALUES ('The ‘black box’ in an aeroplane is black?', 0)");
 	tx.executeSql("INSERT INTO questions(question, answer) VALUES ('The record for the longest rail tunnel is held by the Channel Tunnel between Britain and France?', 0)");
+	console.log("Input");
 	Questions();
 
 }
@@ -51,5 +52,6 @@ function Questions (){
 	function getsuccess(tx) {
 		db.transaction(addQuestions, error);
 		questions = results.rows.length;
+		console.log("Output");
 	}
 }
