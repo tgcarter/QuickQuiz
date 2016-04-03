@@ -1,15 +1,15 @@
 function onLoad() {
     document.addEventListener("deviceready", onDeviceReady, false);
+    var db = window.openDatabase("quickquiz", 1.0, "Questions DB", 1024 * 1024);
+	db.transaction(createTable, error, addsuccess);
 }
 
 function onDeviceReady(){
     navigator.splashscreen.hide();
-    var db = window.openDatabase("quickquiz", 1.0, "Questions DB", 1024 * 1024);
-	db.transaction(createTable, error, addsuccess);
-
 }
 var timeleft = true;
 var questions = 0;
+var qnum = null;
 $(document).on("pageshow","#game",function(){
 	var count=5;
 	document.getElementById("time").innerHTML=count;
@@ -25,11 +25,11 @@ $(document).on("pageshow","#game",function(){
 	  	} else {
 	  		document.getElementById("time").innerHTML=count; // watch for spelling
 	  	}
-	 	
 	}
 	$(document).on("pagebeforehide","#game",function(){
 		clearInterval(counter);
 	});
+
 });
 function createTable(tx) {	
  	tx.executeSql("CREATE TABLE IF NOT EXISTS questions(_id INTEGER PRIMARY KEY, question VARCHAR UNIQUE, answer INT)");
@@ -56,6 +56,16 @@ function getsuccess(results) {
 }
 function FinalDBSetup(tx, results){
 	questions = results.rows.length;
-	console.log(questions);
-	//db.transaction(getQuestions, error, FinalDBSetup);
+}
+function QuestionDisplay(){
+	if (timeleft==true){
+	 	qnum = Math.floor(Math.random() * questions) + 0;
+	 	db.transaction(QueryDisplayQuestion, error);
+	}
+}
+function QueryDisplayQuestion(tx){
+	tx.executeSql('SELECT * FROM questions WHERE _id="'+ qnum+'"', [], DisplayActualQuestion, error);
+}
+function DisplayActualQuestion(results){
+	document.getElementById("question").innerHTML=results.rows.item(0).question;
 }
