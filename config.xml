@@ -5,17 +5,10 @@
         version     = "0.1" >
 		
     <name>QuickQuiz</name>
-
-    <description>
-        The test of knowledge and reaction in the ultimate 60 second quiz game.
-    </description>
-
-    <author href="http://www.tomgc.com/" email="contact@tomgc.com">
-        Tom Carter
-    </author>
+    <description>The test of knowledge and reaction in the ultimate 60 second quiz game.</description>
+	<author href="http://www.tomgc.com/" email="contact@tomgc.com">Tom Carter</author>
 	
-
-		<platform name="ios">
+	<platform name="ios">
 		<preference name="orientation" value="portrait" />
 		<preference name="fullscreen" value="true" />
 		<preference name="target-device" value="handset" />
@@ -52,5 +45,4 @@
 	<gap:plugin name="cordova-plugin-shake" source="npm"/>
 	<gap:plugin name="cordova-plugin-statusbar" source="npm" />
 	<gap:plugin name="org.apache.cordova.splashscreen" />
-	
 </widget>
