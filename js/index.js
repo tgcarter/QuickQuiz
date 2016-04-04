@@ -8,6 +8,7 @@ function onDeviceReady(){
 }
 var timeleft = true;
 var qnum = null;
+var answercorrect = 0;
 var questions = [
     	{"question":"Is New York the capital of America?", "Answer":"0"},
     	{"question":"The Great Wall Of China is visible from the moon?", "Answer":"0"},
@@ -15,7 +16,9 @@ var questions = [
     	{"question":"The record for the longest rail tunnel is held by the Channel Tunnel between Britain and France?", "Answer":"0"},
 	];
 $(document).on("pageshow","#game",function(){
+	shake.startWatch(onShake, 40 /*, onError */)
 	var count=60;
+	answercorrect = 0;
 	document.getElementById("time").innerHTML=count;
 	var counter=setInterval(timer, 1000); //1000 will  run it every 1 second
 	function timer() {
@@ -33,6 +36,7 @@ $(document).on("pageshow","#game",function(){
 	QuestionDisplay();
 	$(document).on("pagebeforehide","#game",function(){
 		clearInterval(counter);
+		shake.stopWatch();
 	});
 
 });
@@ -46,3 +50,16 @@ function QuestionDisplay(){
 	 	document.getElementById("question").innerHTML=showquestion;
 	}
 }
+$( "#true" ).click(function() {
+	if (questions.[qnum].answer==1){
+		answercorrect++;
+	}
+	QuestionDisplay();
+});
+var onShake = function () {
+	if (questions.[qnum].answer==0){
+		answercorrect++;
+	}
+	QuestionDisplay();
+}
+
