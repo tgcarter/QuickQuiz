@@ -14,7 +14,7 @@ var questions = [
     	{"question":"The record for the longest rail tunnel is held by the Channel Tunnel between Britain and France?", "Answer":"0"},
 	];
 $(document).on("pageshow","#game",function(){
-	shake.startWatch(onShake, 100)
+	shake.startWatch(onShake, 100);
 	var count=60;
 	answercorrect = 0;
 	document.getElementById("time").innerHTML=count;
@@ -46,7 +46,7 @@ $(document).on("pageshow","#game",function(){
 
 });
 function QuestionDisplay(){
-	if (timeleft==true){
+	if (timeleft===true){
 	 	qnum = Math.floor(Math.random() * Object.keys(questions).length) + 0;
 	 	var showquestion = questions[qnum].question;
 	 	document.getElementById("question").innerHTML=showquestion;
@@ -59,4 +59,4 @@ var onShake = function () {
 		console.log(answercorrect);
 	}
 	QuestionDisplay();
-}
+};
