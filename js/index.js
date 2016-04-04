@@ -14,7 +14,7 @@ var questions = [
     	{"question":"The record for the longest rail tunnel is held by the Channel Tunnel between Britain and France?", "Answer":"0"},
 	];
 $(document).on("pageshow","#game",function(){
-	shake.startWatch(onShake, 40 /*, onError */)
+	shake.startWatch(onShake, 100)
 	var count=60;
 	answercorrect = 0;
 	document.getElementById("time").innerHTML=count;
@@ -24,7 +24,7 @@ $(document).on("pageshow","#game",function(){
 	  	if (count <= 0){
 	    	clearInterval(counter);
 	    	document.getElementById("time").innerHTML="0";
-	    	$("#quiz").html("<h1 class='center-wrapper'>Times Up!</h1>");
+	    	$("#quiz").html("<h1 class='center-wrapper'>Times Up!</h1><h2>Your score was "+answercorrect+"!</h2>");
 	    	timeleft = false;
 	    	return;
 	  	} else {
@@ -32,6 +32,18 @@ $(document).on("pageshow","#game",function(){
 	  	}
 	}
 	QuestionDisplay();
+	$("#true").on("tap",function(){
+		if (questions[qnum].answer==1){
+			answercorrect++;
+		}
+		QuestionDisplay();
+	});
+	var onShake = function () {
+		if (questions[qnum].answer==0){
+			answercorrect++;
+		}
+		QuestionDisplay();
+	}
 	$(document).on("pagebeforehide","#game",function(){
 		clearInterval(counter);
 		shake.stopWatch();
@@ -45,16 +57,3 @@ function QuestionDisplay(){
 	 	document.getElementById("question").innerHTML=showquestion;
 	}
 }
-$("#true").on("tap",function(){
-	if (questions[qnum].answer==1){
-		answercorrect++;
-	}
-	QuestionDisplay();
-});
-var onShake = function () {
-	if (questions[qnum].answer==0){
-		answercorrect++;
-	}
-	QuestionDisplay();
-}
-
