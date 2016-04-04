@@ -8,10 +8,10 @@ var timeleft = true;
 var qnum = null;
 var answercorrect = 0;
 var questions = [
-    	{"question":"Is New York the capital of America?", "Answer":0},
-    	{"question":"The Great Wall Of China is visible from the moon?", "Answer":0},
-    	{"question":"The ‘black box’ in an aeroplane is black?", "Answer":0},
-    	{"question":"The record for the longest rail tunnel is held by the Channel Tunnel between Britain and France?", "Answer":0},
+    	{"question":"Is New York the capital of America?", "Answer":"0"},
+    	{"question":"The Great Wall Of China is visible from the moon?", "Answer":"0"},
+    	{"question":"The ‘black box’ in an aeroplane is black?", "Answer":"0"},
+    	{"question":"The record for the longest rail tunnel is held by the Channel Tunnel between Britain and France?", "Answer":"0"},
 	];
 $(document).on("pageshow","#game",function(){
 	shake.startWatch(onShake, 100)
@@ -33,7 +33,7 @@ $(document).on("pageshow","#game",function(){
 	}
 	QuestionDisplay();
 	$("#true").on("tap",function(){
-		if (questions[qnum].answer==1){
+		if (questions[qnum].answer=="1"){
 			answercorrect++;
 			console.log(answercorrect);
 		}
@@ -50,10 +50,11 @@ function QuestionDisplay(){
 	 	qnum = Math.floor(Math.random() * Object.keys(questions).length) + 0;
 	 	var showquestion = questions[qnum].question;
 	 	document.getElementById("question").innerHTML=showquestion;
+	 	console.log(questions[qnum].answer);
 	}
 }
 var onShake = function () {
-	if (questions[qnum].answer==0){
+	if (questions[qnum].answer=="0"){
 		answercorrect++;
 		console.log(answercorrect);
 	}
