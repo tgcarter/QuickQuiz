@@ -38,12 +38,6 @@ $(document).on("pageshow","#game",function(){
 		}
 		QuestionDisplay();
 	});
-	var onShake = function () {
-		if (questions[qnum].answer==0){
-			answercorrect++;
-		}
-		QuestionDisplay();
-	}
 	$(document).on("pagebeforehide","#game",function(){
 		clearInterval(counter);
 		shake.stopWatch();
@@ -56,4 +50,10 @@ function QuestionDisplay(){
 	 	var showquestion = questions[qnum].question;
 	 	document.getElementById("question").innerHTML=showquestion;
 	}
+}
+var onShake = function () {
+	if (questions[qnum].answer==0){
+			answercorrect++;
+	}
+	QuestionDisplay();
 }
