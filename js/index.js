@@ -8,10 +8,10 @@ var timeleft = true;
 var qnum = null;
 var answercorrect = 0;
 var questions = [
-    	{"question":"Is New York the capital of America?", "Answer":"0"},
-    	{"question":"The Great Wall Of China is visible from the moon?", "Answer":"0"},
-    	{"question":"The ‘black box’ in an aeroplane is black?", "Answer":"0"},
-    	{"question":"The record for the longest rail tunnel is held by the Channel Tunnel between Britain and France?", "Answer":"0"},
+    	{"question":"Is New York the capital of America?", "answer":"0"},
+    	{"question":"The Great Wall Of China is visible from the moon?", "answer":"0"},
+    	{"question":"The ‘black box’ in an aeroplane is black?", "answer":"0"},
+    	{"question":"The record for the longest rail tunnel is held by the Channel Tunnel between Britain and France?", "answer":"0"},
 	];
 $(document).on("pageshow","#game",function(){
 	shake.startWatch(onShake, 100);
