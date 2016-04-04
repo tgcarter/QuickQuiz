@@ -1,8 +1,6 @@
 function onLoad() {
-    document.addEventListener("deviceready", onDeviceReady, false);
-    
+    document.addEventListener("deviceready", onDeviceReady, false);    
 }
-
 function onDeviceReady(){
     navigator.splashscreen.hide();
 }
@@ -50,14 +48,14 @@ function QuestionDisplay(){
 	 	document.getElementById("question").innerHTML=showquestion;
 	}
 }
-$( "#true" ).click(function() {
-	if (questions.[qnum].answer==1){
+$("#true").click(function() {
+	if (questions[qnum].answer==1){
 		answercorrect++;
 	}
 	QuestionDisplay();
 });
 var onShake = function () {
-	if (questions.[qnum].answer==0){
+	if (questions[qnum].answer==0){
 		answercorrect++;
 	}
 	QuestionDisplay();
