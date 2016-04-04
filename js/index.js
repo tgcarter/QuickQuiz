@@ -41,14 +41,11 @@ $(document).on("pageshow","#game",function(){
 function QuestionDisplay(){
 	if (timeleft==true){
 	 	qnum = Math.floor(Math.random() * Object.keys(questions).length) + 0;
-	 	console.log(qnum);
-	 	console.log(questions);
 	 	var showquestion = questions[qnum].question;
-	 	console.log(showquestion);
 	 	document.getElementById("question").innerHTML=showquestion;
 	}
 }
-$("#true").click(function() {
+$("#true").on("tap",function(){
 	if (questions[qnum].answer==1){
 		answercorrect++;
 	}
