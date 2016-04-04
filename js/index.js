@@ -7,15 +7,16 @@ function onDeviceReady(){
 var timeleft = true;
 var qnum = null;
 var answercorrect = 0;
-var questions = [
-    	{"question":"Is New York the capital of America?", "answer":"0"},
+var questions = $.getJSON( "questions.json");
+    	/*{"question":"Is New York the capital of America?", "answer":"0"},
     	{"question":"The Great Wall Of China is visible from the moon?", "answer":"0"},
     	{"question":"The ‘black box’ in an aeroplane is black?", "answer":"0"},
     	{"question":"The record for the longest rail tunnel is held by the Channel Tunnel between Britain and France?", "answer":"0"},
-	];
+	];*/
 $(document).on("pageshow","#game",function(){
 	shake.startWatch(onShake, 100);
 	var count=60;
+	timeleft = true;
 	answercorrect = 0;
 	document.getElementById("time").innerHTML=count;
 	var counter=setInterval(timer, 1000); //1000 will  run it every 1 second
