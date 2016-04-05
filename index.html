@@ -4,19 +4,20 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>QuickQuiz</title>
-	<script src="phonegap.js"></script>
+	<!--<script src="phonegap.js"></script>-->
   	<link href="css/jquery.mobile-1.4.5.css" rel="stylesheet" type="text/css" />
   	<link href="css/jquery.mobile.icons-1.4.5.css" rel="stylesheet" type="text/css" />
   	<link href="css/custom.css" rel="stylesheet" type="text/css" />
 	<script src="js/jquery-2.2.2.min.js" type="text/javascript"></script>
-	<!--<script>
+	<script>
     $(document).bind('mobileinit',function(){
         $.mobile.changePage.defaults.changeHash = false;
         $.mobile.hashListeningEnabled = false;
         $.mobile.pushStateEnabled = false;
     });
-</script>-->
+</script>
 	<script src="js/jquery.mobile-1.4.5.js" type="text/javascript"></script>
+	<script src='questions.json'></script>
 	<script src='js/index.js'></script>
 </head>
 
@@ -42,6 +43,10 @@
 			<a href="" class="ui-btn" id="true">True</a>
 			<h3 class="center-wrapper false">Shake for False</h3>
 		</div>
+		<div class="center" id="timeup">
+			<h1 class='center-wrapper'>Times Up!</h1>
+			<h2 class='center-wrapper'>Your score was <span id="score"></span></h2>
+		</div>
 	</div>
 </div>
 <div data-role="page" id="settings">
@@ -50,8 +55,8 @@
 		<h1 class="center-wrapper">QuickQuiz</h1>
 		<div class="center">
 			<h2 class="center-wrapper">Settings</h2>
-			<a href="" class="ui-btn">Reset Highscore</a>
-			<a href="" class="ui-btn">Toggle Shake for False</a>
+			<a href="" class="ui-btn" id="highscorereset">Reset Highscore</a>
+			<a href="" class="ui-btn" id="toggleshake">Toggle Shake for False</a>
 		</div>
 	</div>
 </div>

@@ -472,3 +472,6 @@ h1, h2, h3, p {
 .ui-content {
 	padding: 2em 1em 1em;
 }
+#timeup {
+	display: hidden;
+}

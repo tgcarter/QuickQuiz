@@ -1,7 +1,7 @@
-{
-	"questions": [{
-    	"question": "Is New York the capital of America?",
-    	"answer": "0"
+var questions = [
+	{
+		"question": "Is New York the capital of America?",
+	    "answer": "0"
     }, {
     	"question": "The Great Wall Of China is visible from the moon?",
     	"answer": "0"
@@ -11,5 +11,5 @@
     }, {
     	"question": "The record for the longest rail tunnel is held by the Channel Tunnel between Britain and France?",
     	"answer": "0"
-    }]
-}
+    }
+];
