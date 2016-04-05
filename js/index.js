@@ -24,7 +24,7 @@ $(document).on("pagebeforeshow","#game",function(){
 	document.getElementById("time").innerHTML=count;
 });
 $(document).on("pageshow","#game",function(){
-	if (useshake==true){
+	if (useshake===true){
 		shake.startWatch(onShake, 100);
 	}
 	var counter=setInterval(timer, 1000); //1000 will  run it every 1 second
@@ -51,7 +51,7 @@ $(document).on("pageshow","#game",function(){
 	});
 	$(document).on("pagebeforehide","#game",function(){
 		clearInterval(counter);
-		if (useshake==true){
+		if (useshake===true){
 			shake.stopWatch();
 		}
 	});
@@ -69,7 +69,6 @@ var onShake = function () {
 		answercorrect++;
 	}
 	QuestionDisplay();
-};
 };
 $(document).on("pageshow","#settings",function(){
 	$("#toggleshake").on("tap",function(){
