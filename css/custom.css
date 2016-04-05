@@ -475,3 +475,6 @@ h1, h2, h3, p {
 #timeup {
 	display: hidden;
 }
+.containing-element .ui-slider-switch { 
+	width: 9em;
+}

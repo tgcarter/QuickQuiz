@@ -3,7 +3,6 @@ var timeleft = true;
 var qnum = null;
 var answercorrect = 0;
 var count;
-var useshake = true;
 function onLoad() {
     document.addEventListener("deviceready", onDeviceReady, false);
     /*isOffline = 'onLine' in navigator && !navigator.onLine; 
@@ -24,8 +23,8 @@ $(document).on("pagebeforeshow","#game",function(){
 	document.getElementById("time").innerHTML=count;
 });
 $(document).on("pageshow","#game",function(){
-	if (useshake===true){
-		shake.startWatch(onShake, 10);
+	if($('#chkbox').is(':checked')){
+		shake.startWatch(onShake, 0);
 	}
 	var counter=setInterval(timer, 1000); //1000 will  run it every 1 second
 	function timer() {
@@ -51,7 +50,7 @@ $(document).on("pageshow","#game",function(){
 	});
 	$(document).on("pagebeforehide","#game",function(){
 		clearInterval(counter);
-		if (useshake===true){
+		if($('#chkbox').is(':checked')){
 			shake.stopWatch();
 		}
 	});
@@ -76,3 +75,9 @@ $(document).on("pageshow","#settings",function(){
 		console.log(useshake);
 	});
 });
+$("select").change(function() {
+    $("select option:selected").each(function() {
+      str += $(this).text() + " ";
+    });
+    $( "div" ).text( str );
+}).trigger( "change" );
