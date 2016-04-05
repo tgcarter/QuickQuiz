@@ -23,8 +23,10 @@ $(document).on("pagebeforeshow","#game",function(){
 	answercorrect = 0;
 	document.getElementById("time").innerHTML=count;
 });
-$(document).on("pageshow","#game",function(){ 	
-	shake.startWatch(onShake, 100);
+$(document).on("pageshow","#game",function(){
+	if (useshake==true){
+		shake.startWatch(onShake, 100);
+	}
 	var counter=setInterval(timer, 1000); //1000 will  run it every 1 second
 	function timer() {
 	  	count--;
@@ -49,7 +51,9 @@ $(document).on("pageshow","#game",function(){
 	});
 	$(document).on("pagebeforehide","#game",function(){
 		clearInterval(counter);
-		shake.stopWatch();
+		if (useshake==true){
+			shake.stopWatch();
+		}
 	});
 });
 function QuestionDisplay(){
@@ -59,14 +63,13 @@ function QuestionDisplay(){
 	 	document.getElementById("question").innerHTML=showquestion;
 	}
 }
-if (useShake==true){
+var onShake = function () {
 	console.log("shake");
-	var onShake = function () {
-		if (questions[qnum].answer=="0"){
-			answercorrect++;
-		}
-		QuestionDisplay();
-	};
+	if (questions[qnum].answer=="0"){
+		answercorrect++;
+	}
+	QuestionDisplay();
+};
 };
 $(document).on("pageshow","#settings",function(){
 	$("#toggleshake").on("tap",function(){
