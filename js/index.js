@@ -3,6 +3,7 @@ var timeleft = true;
 var qnum = null;
 var answercorrect = 0;
 var count;
+var useshake = true;
 function onLoad() {
     document.addEventListener("deviceready", onDeviceReady, false);
     /*isOffline = 'onLine' in navigator && !navigator.onLine; 
@@ -14,17 +15,27 @@ function onLoad() {
 function onDeviceReady(){
     navigator.splashscreen.hide();
 }
+$( document ).ready(function() {
+	$('#checkbox').change(function(){
+		useshake = !useshake;
+		console.log(useshake);
+	});
+});
 $(document).on("pagebeforeshow","#game",function(){
 	$("#timeup").hide();
 	$("#quiz").show();
-	count=20;
+	count=5;
 	timeleft = true;
 	answercorrect = 0;
 	document.getElementById("time").innerHTML=count;
+	if (useshake===true){
+		$("#falsebtn").hide();
+	}
+	QuestionDisplay();
 });
 $(document).on("pageshow","#game",function(){
-	if($('#chkbox').is(':checked')){
-		shake.startWatch(onShake, 0);
+	if (useshake===true){
+		//shake.startWatch(onShake, 0);
 	}
 	var counter=setInterval(timer, 1000); //1000 will  run it every 1 second
 	function timer() {
@@ -36,12 +47,14 @@ $(document).on("pageshow","#game",function(){
 	    	document.getElementById("score").innerHTML=answercorrect;
 	    	$("#timeup").show();
 	    	timeleft = false;
+	    	setTimeout(function () {
+    			$(':mobile-pagecontainer').pagecontainer('change', '#home');
+			}, 3000);
 	    	return;
 	  	} else {
 	  		document.getElementById("time").innerHTML=count; // watch for spelling
 	  	}
 	}
-	QuestionDisplay();
 	$("#true").on("tap",function(){
 		if (questions[qnum].answer=="1"){
 			answercorrect++;
@@ -50,8 +63,8 @@ $(document).on("pageshow","#game",function(){
 	});
 	$(document).on("pagebeforehide","#game",function(){
 		clearInterval(counter);
-		if($('#chkbox').is(':checked')){
-			shake.stopWatch();
+		if(useshake===true){
+			//shake.stopWatch();
 		}
 	});
 });
@@ -70,14 +83,5 @@ var onShake = function () {
 	QuestionDisplay();
 };
 $(document).on("pageshow","#settings",function(){
-	$("#toggleshake").on("tap",function(){
-		useshake = !useshake;
-		console.log(useshake);
-	});
+
 });
-$("select").change(function() {
-    $("select option:selected").each(function() {
-      str += $(this).text() + " ";
-    });
-    $( "div" ).text( str );
-}).trigger( "change" );

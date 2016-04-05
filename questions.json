@@ -11,5 +11,9 @@ var questions = [
     }, {
     	"question": "The record for the longest rail tunnel is held by the Channel Tunnel between Britain and France?",
     	"answer": "0"
+    }, {
+        "question": "11 x 11 is 121?",
+        "answer": "1"
     }
+
 ];
