@@ -9,16 +9,28 @@ function onLoad() {
     document.addEventListener("deviceready", onDeviceReady, false);
     highscore = localStorage.getItem('highscore') || 0;
     document.getElementById("highscore").innerHTML=highscore;
-    /*isOffline = 'onLine' in navigator && !navigator.onLine; 
+    isOffline = 'onLine' in navigator && !navigator.onLine; 
     if ( isOffline ) {
+    	questions=localquestions;
+    	console.log("locals");
 	}
 	else {
-	}*/
+		console.log("interwebs");
+		var jqxhr = $.getJSON( "http://www.tomgc.com/app.json", function() {
+  			console.log(jqxhr);
+		})
+		.done(function() {
+			questions = remotequestions;
+		})
+		.fail(function() {
+		    console.log("error");
+		    questions=localquestions;
+		});
+	}
 }
 function onDeviceReady(){
     navigator.splashscreen.hide();
     $('#checkbox').change(function(){
-    	console.log("toggle");
 		useshake = !useshake;
 	});
 }
@@ -78,7 +90,7 @@ $(document).on("pageshow","#game",function(){
 	});
 	$(document).on("pagebeforehide","#game",function(){
 		clearInterval(counter);
-		cleatTimeout(finish);
+		clearTimeout(finish);
 		if(useshake===true){
 			shake.stopWatch();
 		}

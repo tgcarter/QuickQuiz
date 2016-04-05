@@ -1,4 +1,4 @@
-var questions = [
+var localquestions = [
 	{
 		"question": "Is New York the capital of America?",
 	    "answer": "0"
