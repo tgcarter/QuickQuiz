@@ -25,7 +25,7 @@ $(document).on("pagebeforeshow","#game",function(){
 });
 $(document).on("pageshow","#game",function(){
 	if (useshake===true){
-		shake.startWatch(onShake, 100);
+		shake.startWatch(onShake, 10);
 	}
 	var counter=setInterval(timer, 1000); //1000 will  run it every 1 second
 	function timer() {
