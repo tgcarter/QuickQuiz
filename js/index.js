@@ -6,11 +6,11 @@ var count;
 var useshake = true;
 function onLoad() {
     document.addEventListener("deviceready", onDeviceReady, false);
-    isOffline = 'onLine' in navigator && !navigator.onLine; 
+    /*isOffline = 'onLine' in navigator && !navigator.onLine; 
     if ( isOffline ) {
 	}
 	else {
-	}
+	}*/
 }
 function onDeviceReady(){
     navigator.splashscreen.hide();
@@ -24,7 +24,7 @@ $(document).on("pagebeforeshow","#game",function(){
 	document.getElementById("time").innerHTML=count;
 });
 $(document).on("pageshow","#game",function(){ 	
-	shake.startWatch(onShake, 100);
+	shake.startWatch(onShake, 10);
 	var counter=setInterval(timer, 1000); //1000 will  run it every 1 second
 	function timer() {
 	  	count--;
