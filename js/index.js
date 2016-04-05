@@ -8,6 +8,7 @@ var highscore = 0;
 function onLoad() {
     document.addEventListener("deviceready", onDeviceReady, false);
     highscore = localStorage.getItem('highscore') || 0;
+    document.getElementById("highscore").innerHTML=highscore;
     /*isOffline = 'onLine' in navigator && !navigator.onLine; 
     if ( isOffline ) {
 	}
@@ -17,6 +18,7 @@ function onLoad() {
 function onDeviceReady(){
     navigator.splashscreen.hide();
     $('#checkbox').change(function(){
+    	console.log("toggle");
 		useshake = !useshake;
 	});
 }
@@ -37,9 +39,10 @@ $(document).on("pagebeforeshow","#game",function(){
 });
 $(document).on("pageshow","#game",function(){
 	if (useshake===true){
-		shake.startWatch(onShake, 0);
+		shake.startWatch(onShake, 10);
 	}
 	var counter=setInterval(timer, 1000); //1000 will  run it every 1 second
+	var finish;
 	function timer() {
 	  	count--;
 	  	if (count <= 0){
@@ -53,7 +56,7 @@ $(document).on("pageshow","#game",function(){
 	    		highscore = answercorrect;
 	    		localStorage.setItem('highscore', highscore);
 	    	}
-	    	setTimeout(function () {
+	    	finish = setTimeout(function () {
     			$(':mobile-pagecontainer').pagecontainer('change', '#home');
 			}, 3000);
 	    	return;
@@ -75,6 +78,7 @@ $(document).on("pageshow","#game",function(){
 	});
 	$(document).on("pagebeforehide","#game",function(){
 		clearInterval(counter);
+		cleatTimeout(finish);
 		if(useshake===true){
 			shake.stopWatch();
 		}
@@ -88,7 +92,6 @@ function QuestionDisplay(){
 	}
 }
 var onShake = function () {
-	console.log("shake");
 	if (questions[qnum].answer=="0"){
 		answercorrect++;
 	}
