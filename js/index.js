@@ -18,13 +18,13 @@ function onDeviceReady(){
 $(document).on("pagebeforeshow","#game",function(){
 	$("#timeup").hide();
 	$("#quiz").show();
-	count=5;
+	count=20;
 	timeleft = true;
 	answercorrect = 0;
 	document.getElementById("time").innerHTML=count;
 });
 $(document).on("pageshow","#game",function(){ 	
-	shake.startWatch(onShake, 10);
+	shake.startWatch(onShake, 100);
 	var counter=setInterval(timer, 1000); //1000 will  run it every 1 second
 	function timer() {
 	  	count--;
@@ -59,7 +59,8 @@ function QuestionDisplay(){
 	 	document.getElementById("question").innerHTML=showquestion;
 	}
 }
-if (onShake==true){
+if (useShake==true){
+	console.log("shake");
 	var onShake = function () {
 		if (questions[qnum].answer=="0"){
 			answercorrect++;
@@ -70,5 +71,6 @@ if (onShake==true){
 $(document).on("pageshow","#settings",function(){
 	$("#toggleshake").on("tap",function(){
 		useshake = !useshake;
+		console.log(useshake);
 	});
 });
