@@ -4,8 +4,10 @@ var qnum = null;
 var answercorrect = 0;
 var count;
 var useshake = true;
+var highscore = 0;
 function onLoad() {
     document.addEventListener("deviceready", onDeviceReady, false);
+    highscore = localStorage.getItem('highscore') || 0;
     /*isOffline = 'onLine' in navigator && !navigator.onLine; 
     if ( isOffline ) {
 	}
@@ -18,6 +20,9 @@ function onDeviceReady(){
 		useshake = !useshake;
 	});
 }
+$(document).on("pagebeforeshow","#home",function(){
+	document.getElementById("highscore").innerHTML=highscore;
+});
 $(document).on("pagebeforeshow","#game",function(){
 	$("#timeup").hide();
 	$("#quiz").show();
@@ -44,6 +49,10 @@ $(document).on("pageshow","#game",function(){
 	    	document.getElementById("score").innerHTML=answercorrect;
 	    	$("#timeup").show();
 	    	timeleft = false;
+	    	if (answercorrect > highscore){
+	    		highscore = answercorrect;
+	    		localStorage.setItem('highscore', highscore);
+	    	}
 	    	setTimeout(function () {
     			$(':mobile-pagecontainer').pagecontainer('change', '#home');
 			}, 3000);
@@ -86,5 +95,7 @@ var onShake = function () {
 	QuestionDisplay();
 };
 $(document).on("pageshow","#settings",function(){
-
+	$("#highscorereset").on("tap",function(){
+		highscore=0;
+	});
 });
