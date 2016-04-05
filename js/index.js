@@ -24,7 +24,7 @@ $(document).on("pagebeforeshow","#game",function(){
 	document.getElementById("time").innerHTML=count;
 });
 $(document).on("pageshow","#game",function(){ 	
-	//shake.startWatch(onShake, 100);
+	shake.startWatch(onShake, 100);
 	var counter=setInterval(timer, 1000); //1000 will  run it every 1 second
 	function timer() {
 	  	count--;
@@ -49,7 +49,7 @@ $(document).on("pageshow","#game",function(){
 	});
 	$(document).on("pagebeforehide","#game",function(){
 		clearInterval(counter);
-		//shake.stopWatch();
+		shake.stopWatch();
 	});
 });
 function QuestionDisplay(){
