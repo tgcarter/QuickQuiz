@@ -41,8 +41,6 @@
 		<splash src="img/splash/Default-Portrait-736h@3x.png" width="1242" height="2208" />
 		<splash src="img/splash/Default-Landscape-736h@3x.png" width="2208" height="1242" />
 	</platform>
-	<platform name="android" />
-
 
 	<gap:plugin name="cordova-plugin-shake" source="npm"/>
 	<gap:plugin name="cordova-plugin-statusbar" source="npm" />

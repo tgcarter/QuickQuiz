@@ -14,13 +14,11 @@ function onLoad() {
 }
 function onDeviceReady(){
     navigator.splashscreen.hide();
-}
-$( document ).ready(function() {
-	$('#checkbox').change(function(){
+    $('#checkbox').change(function(){
 		useshake = !useshake;
 		console.log(useshake);
 	});
-});
+}
 $(document).on("pagebeforeshow","#game",function(){
 	$("#timeup").hide();
 	$("#quiz").show();
@@ -35,7 +33,7 @@ $(document).on("pagebeforeshow","#game",function(){
 });
 $(document).on("pageshow","#game",function(){
 	if (useshake===true){
-		//shake.startWatch(onShake, 0);
+		shake.startWatch(onShake, 0);
 	}
 	var counter=setInterval(timer, 1000); //1000 will  run it every 1 second
 	function timer() {
@@ -64,7 +62,7 @@ $(document).on("pageshow","#game",function(){
 	$(document).on("pagebeforehide","#game",function(){
 		clearInterval(counter);
 		if(useshake===true){
-			//shake.stopWatch();
+			shake.stopWatch();
 		}
 	});
 });
