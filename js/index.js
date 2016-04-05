@@ -16,13 +16,12 @@ function onDeviceReady(){
     navigator.splashscreen.hide();
     $('#checkbox').change(function(){
 		useshake = !useshake;
-		console.log(useshake);
 	});
 }
 $(document).on("pagebeforeshow","#game",function(){
 	$("#timeup").hide();
 	$("#quiz").show();
-	count=5;
+	count=10;
 	timeleft = true;
 	answercorrect = 0;
 	document.getElementById("time").innerHTML=count;
@@ -55,6 +54,12 @@ $(document).on("pageshow","#game",function(){
 	}
 	$("#true").on("tap",function(){
 		if (questions[qnum].answer=="1"){
+			answercorrect++;
+		}
+		QuestionDisplay();
+	});
+	$("#falsebtn").on("tap",function(){
+		if (questions[qnum].answer=="0"){
 			answercorrect++;
 		}
 		QuestionDisplay();
