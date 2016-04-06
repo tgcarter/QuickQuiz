@@ -12,19 +12,14 @@ function onLoad() {
     isOffline = 'onLine' in navigator && !navigator.onLine; 
     if ( isOffline ) {
     	questions=localquestions;
-    	console.log("locals");
 	}
 	else {
-		console.log("interwebs");
-		var jqxhr = $.getJSON( "http://www.tomgc.com/app.json", function() {
-  			console.log(jqxhr);
-		})
-		.done(function() {
-			questions = remotequestions;
-		})
-		.fail(function() {
-		    console.log("error");
-		    questions=localquestions;
+		$.getScript("http://www.tomgc.com/app.json")
+			.fail(function(){
+				questions=localquestions;
+			})
+			.success(function(){
+				questions=remotequestions;
 		});
 	}
 }
