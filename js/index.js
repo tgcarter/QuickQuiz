@@ -16,18 +16,17 @@ function onLoad() {
 	else {
 		$.getScript("http://www.tomgc.com/app.json")
 			.fail(function(){
+				console.log("success");
 				questions=localquestions;
 			})
 			.success(function(){
+				console.log("success");
 				questions=remotequestions;
 		});
 	}
 }
 function onDeviceReady(){
     navigator.splashscreen.hide();
-    $('#checkbox').change(function(){
-		useshake = !useshake;
-	});
 }
 $(document).on("pagebeforeshow","#home",function(){
 	document.getElementById("highscore").innerHTML=highscore;
@@ -108,4 +107,7 @@ $(document).on("pageshow","#settings",function(){
 	$("#highscorereset").on("tap",function(){
 		highscore=0;
 	});
+});
+$(document).on('change', '#checkbox', function(){
+		useshake = !useshake;
 });
