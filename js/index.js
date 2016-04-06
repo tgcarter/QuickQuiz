@@ -5,9 +5,6 @@ var answercorrect = 0;
 var count;
 var useshake = true;
 var highscore = 0;
-var debug1;
-var debug2;
-var debug3;
 function onLoad() {
     document.addEventListener("deviceready", onDeviceReady, false);
     highscore = localStorage.getItem('highscore') || 0;
@@ -15,14 +12,10 @@ function onLoad() {
     isOffline = 'onLine' in navigator && !navigator.onLine; 
     if ( isOffline ) {
     	questions=localquestions;
-    	debug = "faillocal";
 	}
 	else {
 		$.getScript("http://www.tomgc.com/app.json")
-			.fail(function(jqxhr, settings, exception){
-				debug1 = jqxhr;
-				debug2 = settings;
-				debug3 = exception;
+			.fail(function(){
 				questions=localquestions;
 			})
 			.success(function(){
