@@ -5,6 +5,7 @@ var answercorrect = 0;
 var count;
 var useshake = true;
 var highscore = 0;
+var debug;
 function onLoad() {
     document.addEventListener("deviceready", onDeviceReady, false);
     highscore = localStorage.getItem('highscore') || 0;
@@ -12,21 +13,23 @@ function onLoad() {
     isOffline = 'onLine' in navigator && !navigator.onLine; 
     if ( isOffline ) {
     	questions=localquestions;
+    	debug = "faillocal";
 	}
 	else {
 		$.getScript("http://www.tomgc.com/app.json")
 			.fail(function(){
-				console.log("success");
+				debug = "fail";
 				questions=localquestions;
 			})
 			.success(function(){
-				console.log("success");
+				debug = "success";
 				questions=remotequestions;
 		});
 	}
 }
 function onDeviceReady(){
     navigator.splashscreen.hide();
+    console.log(debug);
 }
 $(document).on("pagebeforeshow","#home",function(){
 	document.getElementById("highscore").innerHTML=highscore;
