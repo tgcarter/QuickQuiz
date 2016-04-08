@@ -38,12 +38,16 @@ $(document).on("pagebeforeshow","#game",function(){
 	document.getElementById("time").innerHTML=count;
 	if (useshake===true){
 		$("#falsebtn").hide();
+		$(".false").show();
+	} else {
+		$("#falsebtn").show();
+		$(".false").hide();
 	}
 	QuestionDisplay();
 });
 $(document).on("pageshow","#game",function(){
 	if (useshake===true){
-		shake.startWatch(onShake, 10);
+		shake.startWatch(onShake, 5);
 	}
 	var counter=setInterval(timer, 1000); //1000 will  run it every 1 second
 	var finish;
@@ -108,4 +112,5 @@ $(document).on("pageshow","#settings",function(){
 });
 $(document).on('change', '#checkbox', function(){
 		useshake = !useshake;
+		console.log("toggle");
 });
