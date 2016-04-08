@@ -32,7 +32,7 @@ $(document).on("pagebeforeshow","#home",function(){
 $(document).on("pagebeforeshow","#game",function(){
 	$("#timeup").hide();
 	$("#quiz").show();
-	count=10;
+	count=60;
 	timeleft = true;
 	answercorrect = 0;
 	document.getElementById("time").innerHTML=count;
