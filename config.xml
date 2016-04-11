@@ -45,10 +45,4 @@
 	<gap:plugin name="cordova-plugin-shake" source="npm"/>
 	<gap:plugin name="cordova-plugin-statusbar" source="npm" />
 	<gap:plugin name="org.apache.cordova.splashscreen" />
-	<gap:plugin name="cordova-plugin-whitelist-dev" source="npm"/>
-
-	<access origin="http://tomgc.com" />
-	<allow-navigation href="http://tomgc.com/*" />
-	<access origin="content:///*" />
-
 </widget>
