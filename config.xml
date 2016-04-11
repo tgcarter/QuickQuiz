@@ -45,4 +45,6 @@
 	<gap:plugin name="cordova-plugin-shake" source="npm"/>
 	<gap:plugin name="cordova-plugin-statusbar" source="npm" />
 	<gap:plugin name="org.apache.cordova.splashscreen" />
+
+	<access origin="*" />
 </widget>
