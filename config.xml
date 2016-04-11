@@ -47,4 +47,5 @@
 	<gap:plugin name="org.apache.cordova.splashscreen" />
 
 	<access origin="*" />
+	<allow-navigation href="*" />
 </widget>
